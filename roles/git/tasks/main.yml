@@ -1,0 +1,8 @@
+---
+- name: "git | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".gitconfig"
+    - ".gitignore_global"
+- name: "git | install"
+  package: { name: "git", state: "latest" }

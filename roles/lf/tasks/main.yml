@@ -1,0 +1,3 @@
+---
+- name: "lf | install"
+  package: { name: "lf", state: "latest" } # yay?

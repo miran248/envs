@@ -1,0 +1,3 @@
+os:
+  arch: "{{ ansible_facts.os_family == 'Archlinux' }}"
+  macos: "{{ ansible_facts.os_family == 'Darwin' }}"

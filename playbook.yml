@@ -1,0 +1,16 @@
+- hosts: localhost
+  # gather_facts: false
+  roles:
+    # TODO: Implement me!
+    - { role: "init", tags: [ "init" ] }
+
+    - { role: "bash", tags: [ "bash", "env" ] }
+    - { role: "git", tags: [ "git", "env" ] }
+    - { role: "ssh", tags: [ "ssh", "env" ] }
+    - { role: "tmux", tags: [ "tmux", "env" ] }
+    - { role: "vim", tags: [ "vim", "env" ] }
+    # TODO: Implement me!
+    - { role: "yay", tags: [ "yay", "env" ] }
+
+    # TODO: Implement me!
+    - { role: "lf", tags: [ "lf", "extra" ] }

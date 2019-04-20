@@ -1,0 +1,11 @@
+[user]
+	name = miran248
+	email = miran248@cflow.io
+	signingkey = 5AC478E048E43DBE
+[merge]
+	ff = false
+[core]
+	excludesfile = ~/.gitignore_global
+	ignorecase = false
+[alias]
+	today = log --since=6am

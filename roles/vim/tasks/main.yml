@@ -1,0 +1,10 @@
+---
+- name: "vim | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".vim"
+    - ".vimrc"
+- name: "vim | plugins"
+  get_url: { url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim", dest: "{{ role_path }}/files/.vim/autoload/plug.vim" }
+- name: "vim | install"
+  package: { name: "vim", state: "latest" }

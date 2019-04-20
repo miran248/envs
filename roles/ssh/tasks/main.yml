@@ -1,0 +1,3 @@
+---
+- name: "ssh | install"
+  package: { name: "openssh", state: "latest" }
