@@ -1,0 +1,10 @@
+---
+- name: "gpg | locate pinentry"
+  shell: "which pinentry-tty"
+  register: "pinentry"
+- name: "gpg | configure"
+  template: { src: "{{ role_path }}/files/{{ item }}.j2", dest: "~/{{ item }}", mode: "0644", force: true }
+  with_items:
+    - ".gnupg/gpg-agent.conf"
+- name: "gpg | install"
+  package: { name: "gpg", state: "latest" }

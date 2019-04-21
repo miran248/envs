@@ -6,6 +6,7 @@
 
     - { role: "bash", tags: [ "bash", "env" ] }
     - { role: "git", tags: [ "git", "env" ] }
+    - { role: "gpg", tags: [ "gpg", "env" ] }
     - { role: "ssh", tags: [ "ssh", "env" ] }
     - { role: "tmux", tags: [ "tmux", "env" ] }
     - { role: "vim", tags: [ "vim", "env" ] }

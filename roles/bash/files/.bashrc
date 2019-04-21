@@ -121,6 +121,4 @@ function gpgenv {
   echo "Switched to $GNUPGHOME"
 }
 
-export GPG_TTY=$(tty)
-export PINENTRY_USER_DATA="USE_CURSES=1"
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
