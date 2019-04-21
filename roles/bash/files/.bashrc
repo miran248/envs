@@ -70,12 +70,6 @@ alias push="git push"
 FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
 
 
-
-
-function git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 function gld {
 	git log --after="$* 00:00" --before="$* 23:59" --pretty=format:%s --no-merges --author Miran
 }

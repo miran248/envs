@@ -35,7 +35,6 @@ let loaded_netrwPlugin = 1
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 call plug#end()
