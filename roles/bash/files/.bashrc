@@ -55,6 +55,8 @@ alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
 TMUX_PLUGIN_MANAGER_PATH="${XDG_CONFIG_HOME}/tmux/plugins/"
 
 # editor
+EDITOR=$(which vim)
+VISUAL=${EDITOR}
 alias v="vim"
 
 # git
