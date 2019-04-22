@@ -6,16 +6,30 @@
 [[ $- != *i* ]] && return
 
 # xdg
-XDG_CONFIG_HOME="${HOME}/.config"
-XDG_CACHE_HOME="${HOME}/.cache"
-XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_HOME="${HOME}/.local/share"
 
-LC_CTYPE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+
+# colors
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+WHITE="$(tput setaf 7)"
+GRAY="$(tput setaf 8)"
+RESET="$(tput sgr0)"
+BOLD="$(tput bold)"
+DIM="$(tput dim)"
+START_UNDERLINE="$(tput smul)"
+END_UNDERLINE="$(tput rmul)"
+START_SUBSCRIPT="$(tput ssubm)"
+END_SUBSCRIPT="$(tput rsubm)"
+START_SUPERSCRIPT="$(tput ssupm)"
+END_SUPERSCRIPT="$(tput rsupm)"
+REVERSE="$(tput rev)"
 
 # prompt
-RED="\[$(tput setaf 1)\]"
-RESET="\[$(tput sgr0)\]"
-PS1="${RED}→${RESET} "
+export PS1="\[${RED}\]→\[${RESET}\] "
 
 # colors
 alias diff='diff --color=auto'
@@ -27,24 +41,21 @@ else
   alias ls='ls -G'
 fi
 
-LESS=-R
-LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
-LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-
-man() {
-  LESS_TERMCAP_md=$'\e[01;31m' \
-  LESS_TERMCAP_me=$'\e[0m' \
-  LESS_TERMCAP_se=$'\e[0m' \
-  LESS_TERMCAP_so=$'\e[01;44;33m' \
-  LESS_TERMCAP_ue=$'\e[0m' \
-  LESS_TERMCAP_us=$'\e[01;32m' \
-  command man "$@"
-}
+# less / man
+export LESS="-R"
+export LESS_TERMCAP_mb="${BOLD}${GREEN}"
+export LESS_TERMCAP_md="${BOLD}${RED}"
+export LESS_TERMCAP_me="${RESET}"
+export LESS_TERMCAP_so="${BOLD}${GRAY}"
+export LESS_TERMCAP_se="${RESET}"
+export LESS_TERMCAP_us="${BOLD}${GREEN}"
+export LESS_TERMCAP_ue="${RESET}"
+export LESS_TERMCAP_mr="${REVERSE}"
+export LESS_TERMCAP_mh="${DIM}"
+export LESS_TERMCAP_ZN="${START_SUBSCRIPT}"
+export LESS_TERMCAP_ZV="${END_SUBSCRIPT}"
+export LESS_TERMCAP_ZO="${START_SUPERSCRIPT}"
+export LESS_TERMCAP_ZW="${END_SUPERSCRIPT}"
 
 # ls
 alias ll="ls -lh"
@@ -52,11 +63,11 @@ alias la="ls -lha"
 
 # tmux
 alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
-TMUX_PLUGIN_MANAGER_PATH="${XDG_CONFIG_HOME}/tmux/plugins/"
+export TMUX_PLUGIN_MANAGER_PATH="${XDG_CONFIG_HOME}/tmux/plugins/"
 
 # editor
-EDITOR=$(which vim)
-VISUAL=${EDITOR}
+export EDITOR=$(which vim)
+export VISUAL=${EDITOR}
 alias v="vim"
 
 # git
@@ -69,7 +80,7 @@ alias pull="git pull"
 alias push="git push"
 
 # fzf
-FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
 
 
 function gld {
@@ -123,4 +134,5 @@ function gpgenv {
   echo "Switched to $GNUPGHOME"
 }
 
+export GPG_TTY=$(tty)
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
