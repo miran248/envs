@@ -13,20 +13,32 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export LC_CTYPE="en_US.UTF-8"
 
 # colors
-RED="$(tput setaf 1)"
-GREEN="$(tput setaf 2)"
-WHITE="$(tput setaf 7)"
-GRAY="$(tput setaf 8)"
+gray0=0
+red=1
+green=2
+yellow=3
+blue=4
+purple=5
+cyan=6
+gray5=7 # normal
+gray3=8
+orange=9
+gray1=10
+gray2=11
+gray4=12 # darker
+gray6=13 # brighter
+brown=14
+gray7=15
+black=16
+
+RED="$(tput setaf ${red})"
+GREEN="$(tput setaf ${green})"
+BLUE="$(tput setaf ${blue})"
+DARK="$(tput setaf ${gray4})"
+NORMAL="$(tput setaf ${gray5})"
+BRIGHT="$(tput setaf ${gray6})"
 RESET="$(tput sgr0)"
 BOLD="$(tput bold)"
-DIM="$(tput dim)"
-START_UNDERLINE="$(tput smul)"
-END_UNDERLINE="$(tput rmul)"
-START_SUBSCRIPT="$(tput ssubm)"
-END_SUBSCRIPT="$(tput rsubm)"
-START_SUPERSCRIPT="$(tput ssupm)"
-END_SUPERSCRIPT="$(tput rsupm)"
-REVERSE="$(tput rev)"
 
 # prompt
 export PS1="\[${RED}\]→\[${RESET}\] "
@@ -43,19 +55,28 @@ fi
 
 # less / man
 export LESS="-R"
-export LESS_TERMCAP_mb="${BOLD}${GREEN}"
-export LESS_TERMCAP_md="${BOLD}${RED}"
+# underline
+export LESS_TERMCAP_us="$(tput smul)${BOLD}${GREEN}" # start
+export LESS_TERMCAP_ue="$(tput rmul)${RESET}" # end
+# blink
+export LESS_TERMCAP_mb="${BOLD}${BLUE}" # start
+# bold
+export LESS_TERMCAP_md="${BOLD}${RED}" # start
+# half bright
+export LESS_TERMCAP_mh="$(tput dim)${DARK}" # start
+# reverse
+export LESS_TERMCAP_mr="$(tput rev)" # start
+# end mb, md, mh, mr, ..
 export LESS_TERMCAP_me="${RESET}"
-export LESS_TERMCAP_so="${BOLD}${GRAY}"
-export LESS_TERMCAP_se="${RESET}"
-export LESS_TERMCAP_us="${BOLD}${GREEN}"
-export LESS_TERMCAP_ue="${RESET}"
-export LESS_TERMCAP_mr="${REVERSE}"
-export LESS_TERMCAP_mh="${DIM}"
-export LESS_TERMCAP_ZN="${START_SUBSCRIPT}"
-export LESS_TERMCAP_ZV="${END_SUBSCRIPT}"
-export LESS_TERMCAP_ZO="${START_SUPERSCRIPT}"
-export LESS_TERMCAP_ZW="${END_SUPERSCRIPT}"
+# standout
+export LESS_TERMCAP_so="${BOLD}${BRIGHT}" # start
+export LESS_TERMCAP_se="${RESET}" # end
+# subscript
+export LESS_TERMCAP_ZN=$(tput ssubm) # start
+export LESS_TERMCAP_ZV=$(tput rsubm) # end
+# superscript
+export LESS_TERMCAP_ZO=$(tput ssupm) # start
+export LESS_TERMCAP_ZW=$(tput rsupm) # end
 
 # ls
 alias ll="ls -lh"
