@@ -1,3 +1,7 @@
 ---
+- name: "lf | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".config/lf"
 - name: "lf | install"
   package: { name: "lf", state: "latest" } # yay?

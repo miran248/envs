@@ -97,3 +97,6 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
+
+
+set hidden
