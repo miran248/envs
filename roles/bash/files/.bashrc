@@ -44,7 +44,7 @@ BOLD="$(tput bold)"
 export PS1="\[${RED}\]→\[${RESET}\] "
 
 # history
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoreboth:erasedups
 
 # colors
 alias diff='diff --color=auto'
