@@ -43,6 +43,9 @@ BOLD="$(tput bold)"
 # prompt
 export PS1="\[${RED}\]→\[${RESET}\] "
 
+# history
+export HISTCONTROL=ignoredups:erasedups
+
 # colors
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
@@ -102,6 +105,9 @@ alias push="git push"
 
 # fzf
 export FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
+
+# rsync
+alias rsync="rsync -avzPc"
 
 
 function gld {
