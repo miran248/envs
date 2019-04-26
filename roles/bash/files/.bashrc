@@ -33,6 +33,7 @@ black=16
 
 RED="$(tput setaf ${red})"
 GREEN="$(tput setaf ${green})"
+YELLOW="$(tput setaf ${yellow})"
 BLUE="$(tput setaf ${blue})"
 DARK="$(tput setaf ${gray4})"
 NORMAL="$(tput setaf ${gray5})"
@@ -72,7 +73,7 @@ export LESS_TERMCAP_mr="$(tput rev)" # start
 # end mb, md, mh, mr, ..
 export LESS_TERMCAP_me="${RESET}"
 # standout
-export LESS_TERMCAP_so="${BOLD}${BRIGHT}" # start
+export LESS_TERMCAP_so="${BOLD}${YELLOW}" # start
 export LESS_TERMCAP_se="${RESET}" # end
 # subscript
 export LESS_TERMCAP_ZN=$(tput ssubm) # start
