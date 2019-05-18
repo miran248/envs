@@ -1,9 +1,0 @@
----
-- name: "bash | symlink"
-  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
-  with_items:
-    - ".bash_logout"
-    - ".bash_profile"
-    - ".bashrc"
-- name: "bash | install"
-  package: { name: "bash", state: "latest" }

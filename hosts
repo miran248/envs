@@ -1,2 +1,5 @@
-arch
-mbp
+[sandbox]
+localhost
+
+[sandbox:vars]
+ansible_connection=local

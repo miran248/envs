@@ -1,0 +1,4 @@
+- name: "ssh | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".ssh/config"

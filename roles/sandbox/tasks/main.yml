@@ -1,0 +1,53 @@
+- name: "install packages"
+  package: { name: "{{ item }}", state: "present" }
+  with_items:
+    - bash
+    - git
+    - gpg
+    - lf
+    - openssh
+    - tmux
+    - vim
+
+- name: "bash | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".bash_logout"
+    - ".bash_profile"
+    - ".bashrc"
+
+- name: "git | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".gitconfig"
+    - ".gitignore_global"
+
+- name: "gpg | locate pinentry"
+  shell: "which pinentry-tty"
+  register: "pinentry"
+- name: "gpg | create ~/.gnupg"
+  file: { path: "~/.gnupg", state: "directory" }
+- name: "gpg | configure"
+  template: { src: "{{ role_path }}/templates/{{ item }}.j2", dest: "~/{{ item }}", mode: "0644", force: true }
+  with_items:
+    - ".gnupg/gpg-agent.conf"
+
+- name: "lf | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".config/lf"
+
+- name: "tmux | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".config/tmux"
+- name: "tmux | plugins"
+  git: { repo: "https://github.com/tmux-plugins/tpm", dest: "~/.config/tmux/plugins/tpm" }
+
+- name: "vim | symlink"
+  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
+  with_items:
+    - ".vimrc"
+    - ".vim"
+- name: "vim | plugins"
+  get_url: { url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim", dest: "~/.vim/autoload/plug.vim" }

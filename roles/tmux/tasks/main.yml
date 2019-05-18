@@ -1,9 +1,0 @@
----
-- name: "tmux | symlink"
-  file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
-  with_items:
-    - ".config/tmux"
-- name: "tmux | plugins"
-  git: { repo: "https://github.com/tmux-plugins/tpm", dest: "{{ role_path }}/files/.config/tmux/plugins/tpm" }
-- name: "tmux | install"
-  package: { name: "tmux", state: "latest" }
