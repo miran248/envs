@@ -3,11 +3,12 @@
   with_items:
     - bash
     - git
-    - gpg
+    - gnupg
     - lf
     - openssh
     - tmux
     - vim
+  ignore_errors: yes
 
 - name: "bash | symlink"
   file: { src: "{{ role_path }}/files/{{ item }}", path: "~/{{ item }}", state: "link", force: true }
