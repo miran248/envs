@@ -1,5 +1,5 @@
 - hosts: sandbox
   roles:
     - { role: "sandbox" }
-    - { role: "sandbox-arch", when: "ansible_facts.os_family == 'Archlinux'" }
+    - { role: "sandbox-arch", become: yes, when: "ansible_facts.os_family == 'Archlinux'" }
     - { role: "sandbox-macos", when: "ansible_facts.os_family == 'Darwin'" }
