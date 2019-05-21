@@ -1,4 +1,5 @@
 dependencies:
+  - sandbox-arch-pre
   - dev-sec.ssh-hardening
-  - ansible-vault
   - brianshumate.consul
+  - ansible-vault
