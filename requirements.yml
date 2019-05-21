@@ -1,3 +1,4 @@
 # sandbox-arch
 - dev-sec.ssh-hardening
 - git+https://github.com/miran248/ansible-vault.git
+- brianshumate.consul
