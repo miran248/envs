@@ -4,3 +4,4 @@ ssh_group: root
 
 vault_bin_path: /bin
 vault_plugin_path: /lib/vault/plugins
+vault_iface: ens3
